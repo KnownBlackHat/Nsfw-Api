@@ -3,14 +3,13 @@ import random
 from datetime import datetime
 from functools import wraps
 from time import time
-from typing import Awaitable, Callable, Dict, Generator, List, Set, ParamSpec
+from typing import Awaitable, Callable, Dict, Generator, List, ParamSpec, Set
 
 import httpx
 from aiocache import cached
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from selectolax.parser import HTMLParser
-
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -116,15 +115,17 @@ class AdultScrapper:
         return random.choices(data["videos"], k=amount)
 
 
-
-P = ParamSpec("P")
+# P = ParamSpec("P")
 def elapsed_time(
-    func: Callable[P, Awaitable[List]]
-) -> Callable[P, Awaitable[JSONResponse]]:
+    func: Callable[
+        ..., Awaitable[List]
+    ]  #  instead of P, ellipse is being used for vercel compatibility
+) -> Callable[..., Awaitable[JSONResponse]]:
     """Decorator to calculate the elapsed time of the function"""
 
     @wraps(func)
-    async def wrapper(*args: P.args, **kwargs: P.kwargs) -> JSONResponse:
+    # async def wrapper(*args: P.args, **kwargs: P.kwargs) -> JSONResponse:
+    async def wrapper(*args: object, **kwargs: object) -> JSONResponse:
         start = time()
         result = await func(*args, **kwargs)
         end = time()
