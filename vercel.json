@@ -17,15 +17,15 @@
     "version": 2,
     "builds": [
         {
-            "src": "app/__main__.py",
+            "src": "/app/api.py",
             "use": "@vercel/python",
-            "config": {"runtime": "python 3.12"}
+            "config": {"runtime": "python 3.11"}
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "app/__main__.py"
+            "dest": "app/api.py"
         }
     ]
 >>>>>>> 9875e54 (chore: update vercel configs)
