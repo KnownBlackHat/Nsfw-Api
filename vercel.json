@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "devCommand": "uvicorn main:app --host 0.0.0.0 --port 3000",
   "builds": [
     {
@@ -12,4 +13,20 @@
       "dest": "api/index.py"
     }
   ]
+=======
+    "version": 2,
+    "builds": [
+        {
+            "src": "main.py",
+            "use": "@vercel/python",
+            "config": {"runtime": "python 3.12"}
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "main.py"
+        }
+    ]
+>>>>>>> 9875e54 (chore: update vercel configs)
 }
