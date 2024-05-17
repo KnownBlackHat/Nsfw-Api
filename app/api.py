@@ -11,7 +11,6 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from selectolax.parser import HTMLParser
 
-from helper import elapsed_time, format_video_payload
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
