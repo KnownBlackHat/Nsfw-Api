@@ -118,8 +118,8 @@ class AdultScrapper:
 
 
 
-
-def elapsed_time[**P](
+P = ParamSpec("P")
+def elapsed_time(
     func: Callable[P, Awaitable[List]]
 ) -> Callable[P, Awaitable[JSONResponse]]:
     """Decorator to calculate the elapsed time of the function"""
