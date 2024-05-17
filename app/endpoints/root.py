@@ -1,10 +1,9 @@
 from typing import List
 
 import httpx
+from adultscrapper import AdultScrapper
 from fastapi import APIRouter
-
-from app.adultscrapper import AdultScrapper
-from app.helper import elapsed_time, format_video_payload
+from helper import elapsed_time, format_video_payload
 
 router = APIRouter()
 
