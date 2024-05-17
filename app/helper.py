@@ -6,9 +6,10 @@ from typing import Awaitable, Callable, Dict, List, ParamSpec
 from fastapi.responses import JSONResponse
 
 logger = logging.getLogger(__name__)
+P = ParamSpec("P")
 
 
-def elapsed_time[**P](
+def elapsed_time(
     func: Callable[P, Awaitable[List]]
 ) -> Callable[P, Awaitable[JSONResponse]]:
     """Decorator to calculate the elapsed time of the function"""
