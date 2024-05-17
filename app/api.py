@@ -3,7 +3,7 @@ import random
 from datetime import datetime
 from functools import wraps
 from time import time
-from typing import Awaitable, Callable, Dict, Generator, List, Set
+from typing import Awaitable, Callable, Dict, Generator, List, Set, ParamSpec
 
 import httpx
 from aiocache import cached
