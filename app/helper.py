@@ -1,21 +1,24 @@
 import logging
 from functools import wraps
 from time import time
-from typing import Awaitable, Callable, Dict, List, ParamSpec
+from typing import Awaitable, Callable, Dict, List  # , ParamSpec
 
 from fastapi.responses import JSONResponse
 
 logger = logging.getLogger(__name__)
-P = ParamSpec("P")
+# P = ParamSpec("P")
 
 
 def elapsed_time(
-    func: Callable[P, Awaitable[List]]
-) -> Callable[P, Awaitable[JSONResponse]]:
+    func: Callable[
+        ..., Awaitable[List]
+    ]  # instead of P ellipse is being used for vercel py 3.9 runtime compatibility
+) -> Callable[..., Awaitable[JSONResponse]]:
     """Decorator to calculate the elapsed time of the function"""
 
     @wraps(func)
-    async def wrapper(*args: P.args, **kwargs: P.kwargs) -> JSONResponse:
+    # async def wrapper(*args: P.args, **kwargs: P.kwargs) -> JSONResponse:
+    async def wrapper(*args: object, **kwargs: object) -> JSONResponse:
         start = time()
         result = await func(*args, **kwargs)
         end = time()
