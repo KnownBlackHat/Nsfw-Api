@@ -96,4 +96,6 @@ class AdultScrapper:
             "thumbsize=all&page=1&sort=new"
         )
         data = resp.json()
+        if not data.get("videos"):
+            return []
         return random.choices(data["videos"], k=amount)
